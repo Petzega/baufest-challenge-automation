@@ -22,4 +22,4 @@ Característica: Compras en demoblaze.com
     Entonces se agrega correctamente el producto "<producto>"
     Ejemplos:
       | usuario                  | clave            | categoriaProducto | producto        |
-      | baufest_usuario_01   | user_clave_01   |Laptops                     | MacBook Pro |
+      | baufest_usuario   | user_clave   |Laptops                     | MacBook Pro |

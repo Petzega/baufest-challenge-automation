@@ -7,16 +7,18 @@ import org.testng.annotations.AfterTest;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "com.bdd.baufest.web.stepDefinition",
+        glue = {"com.bdd.baufest.web.stepDefinition", "com.bdd.baufest.mobile.stepDefinition"},
         plugin = {"pretty", "html:target/cucumber"},
-        tags = "@registroDemoblaze",
+        tags = "@nativeDemoApp",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @AfterTest
     public void quitDriver() {
-        DriverFactory.quitDriver();
-        System.out.println("Driver quitted");
+        if (DriverFactory.webDriver != null) {
+            DriverFactory.quitDriver();
+            System.out.println("Driver quitted");
+        }
     }
 }
