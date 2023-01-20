@@ -2,14 +2,7 @@ package com.bdd.baufest.mobile.page;
 
 import com.bdd.baufest.mobile.locator.MobileLocators;
 import com.bdd.baufest.utils.AndroidUtils;
-import com.bdd.baufest.utils.DriverFactory;
-import com.bdd.baufest.utils.PublicVariables;
 import io.cucumber.datatable.DataTable;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class MobilePage extends AndroidUtils {
 

@@ -32,12 +32,11 @@ public class DriverFactory {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "android");
         capabilities.setCapability("platformVersion", "11");
-        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability("deviceName", "BISON2103132525");
         capabilities.setCapability("appPackage", "com.wdiodemoapp");
         capabilities.setCapability("appActivity", "com.wdiodemoapp.SplashActivity");
         capabilities.setCapability("noReset", false);
         capabilities.setCapability("fullReset", false);
-//        capabilities.setCapability("chromedriverExecutable", "D:\\Documents\\Workspace\\Remote\\baufest-challenge-automation\\src\\test\\resources\\driver\\chromedriver.exe");
         capabilities.setCapability("chromedriverExecutable", chromePath);
         try {
             androidDriver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
