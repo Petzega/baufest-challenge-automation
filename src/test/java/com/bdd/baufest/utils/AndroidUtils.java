@@ -29,7 +29,6 @@ public class AndroidUtils {
     public static WebElement doWaitVisibiliTyOfElementLocated(long waitingTime, By path) {
         return new WebDriverWait(DriverFactory.androidDriver, Duration.ofSeconds(waitingTime)).until(ExpectedConditions.visibilityOfElementLocated(path));
     }
-
     public static void doClickElement(long waitingTime, By path) {
         doWaitVisibiliTyOfElementLocated(waitingTime, path).click();
     }
@@ -135,6 +134,7 @@ public class AndroidUtils {
     }
 
     public static void assertText(long waitingTime, By path, String value) {
+        doSleep(3000);
         Assert.assertEquals(getTextElement(waitingTime, path), value);
     }
 
