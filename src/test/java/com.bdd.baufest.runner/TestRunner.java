@@ -9,7 +9,7 @@ import org.testng.annotations.AfterTest;
         features = "src/test/resources/features",
         glue = {"com.bdd.baufest.web.stepDefinition", "com.bdd.baufest.mobile.stepDefinition"},
         plugin = {"pretty", "html:target/cucumber"},
-        tags = "@nativeDemoApp",
+        tags = "@registroDemoblaze",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 public class TestRunner extends AbstractTestNGCucumberTests {

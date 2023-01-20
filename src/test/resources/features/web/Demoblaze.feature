@@ -8,12 +8,12 @@ Característica: Compras en demoblaze.com
   Antecedentes:
     Dado que ingreso a la web de demoblaze.com
 
-#  Esquema del escenario: Registro de usuario en demoblaze.com
-#    Cuando me registre con el usuario "<usuario>" con clave "<clave>" valida
-#    Entonces se realiza el registro correctamente
-#      Ejemplos:
-#        | usuario                   | clave                 |
-#        | baufest_usuario   | user_clave   |
+  Esquema del escenario: Registro de usuario en demoblaze.com
+    Cuando me registre con el usuario "<usuario>" con clave "<clave>" valida
+    Entonces se realiza el registro correctamente
+      Ejemplos:
+        | usuario                   | clave                 |
+        | baufest_usuario   | user_clave   |
 
   Esquema del escenario: Agregar un producto al carrito
     Cuando inicie sesion con el usuario "<usuario>" con clave "<clave>"

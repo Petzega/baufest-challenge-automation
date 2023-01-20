@@ -15,7 +15,7 @@ Característica: Interactuar con la aplicacion
     Entonces se inicia sesion correctamente en la aplicacion
     Ejemplos:
       | usuario                                       | clave                  |
-      | baufest_user_01@test.com   | user_clave_01   |
+      | baufest_user@test.com   | user_clave   |
 
   Escenario:  Completar formulario
     Cuando complete el formulario con los datos
