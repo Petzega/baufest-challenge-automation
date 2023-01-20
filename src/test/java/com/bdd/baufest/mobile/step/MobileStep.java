@@ -29,4 +29,16 @@ public class MobileStep {
     public void validarBoton(String estado) {
         mobilePage.validarBotonPage(estado);
     }
+
+    public void interactuarWebview(String busqueda) {
+        mobilePage.interactuarWebviewPage(busqueda);
+    }
+
+    public void consultarDocsApis() {
+        mobilePage.elementosWebViewPage();
+    }
+
+    public void redireccionFooter() {
+        mobilePage.elementosFooterWebViewPage();
+    }
 }

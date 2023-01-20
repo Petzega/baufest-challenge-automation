@@ -2,7 +2,14 @@ package com.bdd.baufest.mobile.page;
 
 import com.bdd.baufest.mobile.locator.MobileLocators;
 import com.bdd.baufest.utils.AndroidUtils;
+import com.bdd.baufest.utils.DriverFactory;
+import com.bdd.baufest.utils.PublicVariables;
 import io.cucumber.datatable.DataTable;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class MobilePage extends AndroidUtils {
 
@@ -49,5 +56,31 @@ public class MobilePage extends AndroidUtils {
         doClickElement(10, MobileLocators.BUTTON_ACTIVATED);
     }
 
+    public void interactuarWebviewPage(String busqueda) {
+        doClickElement(10, MobileLocators.NAV_OPTION_WEBVIEW);
+        doWaitVisibiliTyOfElementLocated(10, MobileLocators.WEBVIEW);
+        contextWebview();
+        doClickElement(10, MobileLocators.BUTTON_SEARCH);
+        setTextElement(10, MobileLocators.INPUT_SEARCH, busqueda);
+        doClickElement(10, MobileLocators.BUTTON_CANCEL);
+    }
 
+    public void elementosWebViewPage() {
+        doClickElement(10, MobileLocators.NAV_BAR);
+        doClickElement(10, MobileLocators.OPTION_DOCS);
+        doClickElement(10, MobileLocators.NAV_BAR);
+        doClickElement(10, MobileLocators.BACK_TO_MENU);
+        doClickElement(10, MobileLocators.OPTION_API);
+        doClickElement(10, MobileLocators.NAV_BAR);
+        doSleep(1000);
+        doClickElement(10, MobileLocators.BACK_TO_MENU);
+        doClickElement(10, MobileLocators.HOME_APK);
+    }
+
+    public void elementosFooterWebViewPage() {
+        doVerticalSwipeToElement(doWaitVisibiliTyOfElementLocated(10, MobileLocators.P_TEXT), doWaitVisibiliTyOfElementLocated(10, MobileLocators.NAV_BAR));
+        doVerticalSwipeToElement(doWaitVisibiliTyOfElementLocated(10, MobileLocators.H3_TEXT), doWaitVisibiliTyOfElementLocated(10, MobileLocators.NAV_BAR));
+        doVerticalSwipeToElement(doWaitVisibiliTyOfElementLocated(10, MobileLocators.H3_TEXT_1), doWaitVisibiliTyOfElementLocated(10, MobileLocators.NAV_BAR));
+        doVerticalSwipeToElement(doWaitVisibiliTyOfElementLocated(10, MobileLocators.H3_TEXT_2), doWaitVisibiliTyOfElementLocated(10, MobileLocators.NAV_BAR));
+    }
 }

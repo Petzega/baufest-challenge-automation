@@ -11,6 +11,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Set;
 
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
@@ -53,53 +54,27 @@ public class AndroidUtils {
         return validator;
     }
 
-    public static LocalDate datesPart(String fecha) {
-        return LocalDate.parse(fecha);
+    public static void assertText(long waitingTime, By path, String value) {
+        doSleep(3000);
+        Assert.assertEquals(getTextElement(waitingTime, path), value);
     }
 
-    public static String getMonth(String date) {
-        /*String value = datesPart(date).getMonth().toString().toLowerCase();
-        return value.substring(0, 1).toUpperCase() + value.substring(1);*/
-        String value = null;
-        switch (datesPart(date).getMonth()) {
-            case JANUARY:  value = "enero"; break;
-            case FEBRUARY:  value = "febrero"; break;
-            case MARCH:  value = "marzo"; break;
-            case APRIL:  value = "abril"; break;
-            case MAY:  value = "mayo"; break;
-            case JUNE:  value = "junio"; break;
-            case JULY:  value = "julio"; break;
-            case AUGUST:  value = "agosto"; break;
-            case SEPTEMBER:  value = "setiembre"; break;
-            case OCTOBER:  value = "octubre"; break;
-            case NOVEMBER:  value = "noviembre"; break;
-            case DECEMBER:  value = "diciembre"; break;
+    public static void assertContainsText(long waitingTime, By path, String value) {
+        Assert.assertTrue(getTextElement(waitingTime, path).contains(value));
+    }
+
+    public static String getDataTable(DataTable dataTable, String value) {
+        return dataTable.asMaps(String.class, String.class).get(0).get(value);
+    }
+
+    public static void contextWebview() {
+        Set<String> contextNames = DriverFactory.androidDriver.getContextHandles();
+        for (String contextName : contextNames) {
+            System.out.println(contextName);
+            if (contextName.contains("WEBVIEW")){
+                DriverFactory.androidDriver.context(contextName);
+            }
         }
-        return value;
-    }
-
-    public static String getMonthShort(String date) {
-        String value = null;
-        switch (datesPart(date).getMonth()) {
-            case JANUARY:  value = "ene."; break;
-            case FEBRUARY:  value = "feb."; break;
-            case MARCH:  value = "mar."; break;
-            case APRIL:  value = "abr."; break;
-            case MAY:  value = "may."; break;
-            case JUNE:  value = "jun."; break;
-            case JULY:  value = "jul."; break;
-            case AUGUST:  value = "ago."; break;
-            case SEPTEMBER:  value = "set."; break;
-            case OCTOBER:  value = "oct."; break;
-            case NOVEMBER:  value = "nov."; break;
-            case DECEMBER:  value = "dic."; break;
-        }
-        return value;
-    }
-
-    public static String getDay(String date) {
-        String value = String.valueOf(datesPart(date).getDayOfMonth());
-        return value.length() == 1 ? "0" + value : value;
     }
 
     public static void doVerticalSwipeToElement(WebElement startElement, WebElement endElement) {
@@ -114,43 +89,7 @@ public class AndroidUtils {
                 .release().perform();
     }
 
-    public static void doVerticalSwipe(double startPercentage, double endPercentage, double anchorPercentage) {
-        Dimension size = DriverFactory.androidDriver.manage().window().getSize();
-        doSleep(250);
-        int anchor = (int) (size.width * anchorPercentage);
-        int startPoint = (int) (size.height * startPercentage);
-        int endPoint = (int) (size.height * endPercentage);
-        new TouchAction(DriverFactory.androidDriver)
-                .press(point(anchor, startPoint))
-                .waitAction(waitOptions(ofMillis(1000)))
-                .moveTo(point(anchor, endPoint))
-                .release().perform();
-    }
-
-    public static void tapView(int x,  int y) {
-        new TouchAction(DriverFactory.androidDriver)
-                .tap(point(x,y))
-                .waitAction(waitOptions(ofMillis(250))).perform();
-    }
-
-    public static void assertText(long waitingTime, By path, String value) {
-        doSleep(3000);
-        Assert.assertEquals(getTextElement(waitingTime, path), value);
-    }
-
-    public static void assertContainsText(long waitingTime, By path, String value) {
-        Assert.assertTrue(getTextElement(waitingTime, path).contains(value));
-    }
-
-    public static boolean validateText(long waitingTime, By path, String value) {
-        return getTextElement(waitingTime, path).equals(value);
-    }
-
-    public static boolean validatePartialText(long waitingTime, By path, String value) {
-        return getTextElement(waitingTime, path).contains(value);
-    }
-
-    public static String getDataTable(DataTable dataTable, String value) {
-        return dataTable.asMaps(String.class, String.class).get(0).get(value);
+    public static void returnNativeApp() {
+        DriverFactory.androidDriver.context("NATIVE_APP");
     }
 }

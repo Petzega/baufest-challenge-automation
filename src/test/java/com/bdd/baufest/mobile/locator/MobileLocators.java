@@ -31,4 +31,18 @@ public class MobileLocators {
     public static By BUTTON_STATUS = By.id("android:id/message");
     public static By BUTTON_ACTIVATED = By.id("android:id/button1");
     public static By NAV_OPTION_WEBVIEW = By.xpath("//android.widget.Button[@content-desc=\"Webview\"]");
+    public static By WEBVIEW = By.xpath("//android.webkit.WebView");
+    public static By BUTTON_SEARCH = By.xpath("//button[@class='DocSearch DocSearch-Button']");
+    public static By INPUT_SEARCH = By.xpath("//input[@id='docsearch-input']");
+    public static By BUTTON_CANCEL = By.xpath("//button[@class='DocSearch-Cancel']");
+    public static By NAV_BAR = By.xpath("//button[@aria-label='Toggle navigation bar']");
+    public static By OPTION_DOCS = By.xpath("//ul[@class='menu__list']/descendant::a[contains(text(), 'Docs')]");
+    public static By OPTION_API = By.xpath("//ul[@class='menu__list']/descendant::a[contains(text(), 'API')]");
+    public static By CLOSE_NAV_BAR = By.xpath("//button[@aria-label='Close navigation bar']");
+    public static By BACK_TO_MENU = By.xpath("//button[@class='clean-btn navbar-sidebar__back']");
+    public static By P_TEXT = By.xpath("//p[@class='hero__subtitle']");
+    public static By H3_TEXT = By.xpath("//h3[contains(text(), 'Test in Real Environments')]");
+    public static By H3_TEXT_1 = By.xpath("//h3[contains(text(), 'Based on Web Standards')]");
+    public static By H3_TEXT_2 = By.xpath("//h3[contains(text(), 'Committed Community')]");
+    public static By HOME_APK = By.xpath("//div[@class='navbar-sidebar__brand']/child::a[@class='navbar__brand']");
 }
